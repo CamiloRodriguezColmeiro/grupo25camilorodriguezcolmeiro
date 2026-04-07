@@ -14,9 +14,13 @@ Curso de Programación 2, Universidad Nacional de Lujan
 Apellido y Nombre // Legajo // Mails
 
 Rodriguez Colmeiro Camilo // 200796 // camrodriguez54@gmail.com
+
 Somosa Guillermo Sebastian// 104311 // sebastiansomosa@yahoo.com.ar
+
 Garcia Thiago Nahuel // 200801 //
+
 Herrera Brian Benjamin // 194014 //
+
 Megale Marcos // 192134 //
 
 
