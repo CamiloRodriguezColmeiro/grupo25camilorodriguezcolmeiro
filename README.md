@@ -21,6 +21,6 @@ Garcia Thiago Nahuel // 200801 // thiago.garciacnsl@gmail.com
 
 Herrera Brian Benjamin // 194014 // bbh476403@gmail.com
 
-Megale Marcos // 192134 //
+Megale Marcos // 192134 // megalemarcos741@gmail.com
 
 
