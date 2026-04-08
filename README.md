@@ -17,9 +17,9 @@ Rodriguez Colmeiro Camilo // 200796 // camrodriguez54@gmail.com
 
 Somosa Guillermo Sebastian// 104311 // sebastiansomosa@yahoo.com.ar
 
-Garcia Thiago Nahuel // 200801 //
+Garcia Thiago Nahuel // 200801 // thiago.garciacnsl@gmail.com
 
-Herrera Brian Benjamin // 194014 //
+Herrera Brian Benjamin // 194014 // bbh476403@gmail.com
 
 Megale Marcos // 192134 //
 
