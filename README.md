@@ -23,4 +23,4 @@ Herrera Brian Benjamin // 194014 // bbh476403@gmail.com
 
 Megale Marcos // 192134 // megalemarcos741@gmail.com
 
-
+Carrizo Alexander David // 195216 // alexandercarrizo17@gmail.com
