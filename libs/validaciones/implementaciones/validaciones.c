@@ -36,7 +36,8 @@ void trim(char *str) {
 }
 
 bool tieneEspaciosInternos(const char *str) {
-    for (int i = 0; str[i] != '\0'; i++) {
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
         if (isspace(str[i])) {
             return true;
         }
@@ -57,7 +58,7 @@ int leerEntero(const char* mensaje) {
 
         x = strtol(buffer, &endptr, 10);
 
-        // Verificar que no haya basura después del número
+        // Verificar que no haya basura despues del numero
         if (endptr == buffer || (*endptr != '\n' && *endptr != '\0')) {
             printf("Error: debe ingresar un numero entero valido.\n");
         } else {
@@ -88,7 +89,8 @@ int leerNatural(const char* mensaje) {
 }
 
 int esSenialValida(char* s) {
-    for (int i = 0; s[i]; i++) {
+    int i;
+    for (i = 0; s[i]; i++) {
         if (s[i] != 'H' && s[i] != 'L') return 0;
     }
     return 1;

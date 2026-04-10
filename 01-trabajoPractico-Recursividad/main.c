@@ -19,7 +19,7 @@ void aut(char **output) {
 //----- funcion para liberar datos ------------
 void liberaMemoria(char **output){
     int i;
-    for (  i = 0; i < 100; i++)
+    for (i = 0; i < 100; i++)
         free(output[i]);
 }
 //----- funcion de cargar datos ------------
@@ -51,7 +51,7 @@ int cargaDeDatos(int *a) {
 //-- aca se controla si no es repetido---
         encontrado = 0;
         int i;
-        for (  i = 0; i < tam; i++)
+        for (i = 0; i < tam; i++)
             if (a[i] == (int)num2) encontrado = 1;
 
         if (!encontrado) a[tam++] = (int)num2;
@@ -288,16 +288,8 @@ int main() {
                     if (esNumero(entrada)) {//se contola si es un numero
                             sub_opcion = atoi(entrada);
                             } else {
-                       // printf("Entrada invalida.\n");
                         sub_opcion = 0; // fuerza default
                         }
-
-
-
-               /*   scanf("%s", entrada);
-                    if (!esNumero(entrada)) continue;
-                    sub_opcion = atoi(entrada);*/
-
                     if (sub_opcion == 1) {
                         printf("Ingrese numero: ");
 
