@@ -19,7 +19,7 @@ int producto (int m, int n);
 //Ejercicio 3
 /*3.	Generar un algoritmo recursivo que calcule el k-ésimo número de la serie de Fibonacci.*/
 
-int terminoSeridFibonacci(int k);
+int terminoSerieFibonacci(int k);
 
 
 //Ejercicio 4
@@ -51,7 +51,7 @@ Nivel reunión	Vista frontal de la delegación
 
 */
 
-char * reunionMafia(int nivel);
+char *reunionMafia(int nivel);
 
 
 //ejercicio 7
