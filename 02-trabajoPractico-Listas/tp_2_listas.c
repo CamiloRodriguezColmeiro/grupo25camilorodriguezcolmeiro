@@ -239,6 +239,6 @@ bool esSublista(Lista l1, Lista l2) {
             return false;
         }
     }
-    printf("Complejidad: O(n x m)\n");
+    printf("Complejidad: O(n^2)\n");
     return true;
 }
