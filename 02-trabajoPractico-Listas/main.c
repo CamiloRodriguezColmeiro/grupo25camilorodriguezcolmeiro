@@ -135,9 +135,6 @@ int main() {
                     }
                 }
                 if (!r.escalar){
-                   // printf("No es multiplo.\n");
-               // }else{
-
                     printf("Un elemento de la primera lista es 0, imposibilitando la division.\n");
                 }
             }
