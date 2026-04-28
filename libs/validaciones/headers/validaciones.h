@@ -32,4 +32,9 @@ void trim(char *str);
 //Ver si tiene espacios intermedios y continua la cadena
 bool tieneEspaciosInternos(const char *str);
 
+//Chequea si el numero es decimal
+int esDecimal(const char *cadena);
+
+//Lee un numero Double valido
+double leerDouble(const char *mensaje);
 #endif

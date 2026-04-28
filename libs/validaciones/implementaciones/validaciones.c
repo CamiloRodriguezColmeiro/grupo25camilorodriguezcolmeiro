@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <limits.h>
 #include "../headers/validaciones.h"
+#define MAX 100
 
 void limpiarBuffer() {
     while (getchar() != '\n');
@@ -117,4 +118,39 @@ int limiteSup(long num2) {
     return 1;
     }
     return 0; 
+}
+
+int esDecimal(const char *cadena) {
+    int punto = 0;
+    int i = 0;
+
+    if (cadena[0] == '-') i++;
+
+    for (; cadena[i] != '\0'; i++) {
+        if (cadena[i] == '.') {
+            if (punto) return 0;
+            punto = 1;
+        } else if (!isdigit(cadena[i])) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+double leerDouble(const char *mensaje) {
+    char buffer[MAX];
+
+    while (1) {
+        printf("%s", mensaje);
+        fgets(buffer, MAX, stdin);
+
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        if (esDecimal(buffer)) {
+            return atof(buffer);
+        }
+
+        printf("Error: debe ingresar un numero decimal valido.\n");
+    }
 }
