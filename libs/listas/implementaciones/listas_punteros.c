@@ -1,10 +1,8 @@
-#include "../headers/listas.h"
+#include ".\listas.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../tipoElemento/headers/tipo_elemento.h"
 
-
-static const int TAMANIO_MAXIMO = 100;
+// static const int TAMANIO_MAXIMO = 100;  Pasado al .h
 
 struct Nodo {
     TipoElemento datos;
@@ -138,8 +136,7 @@ bool l_insertar(Lista lista, TipoElemento elemento, int pos) {
         lista->inicio = nuevo_nodo;
     } else {
         struct Nodo *temp2 = lista->inicio;
-        int i;
-        for (  i = 0; i < pos - 2; i++) {
+        for (int i = 0; i < pos - 2; i++) {
             temp2 = temp2->siguiente;
         }
         nuevo_nodo->siguiente = temp2->siguiente;
@@ -164,8 +161,7 @@ bool l_eliminar(Lista lista, int pos) {
             free(actual);
             borre = true;
         } else {
-            int i ;
-            for (  i = 0; i < pos - 2; i++) {
+            for (int i = 0; i < pos - 2; i++) {
                 actual = actual->siguiente;
             }
             // actual apunta al nodo en posición (pos - 1)
@@ -186,8 +182,7 @@ TipoElemento l_recuperar(Lista lista, int pos) {
     }
     // Si existe lo retorno
     struct Nodo *temp2 = lista->inicio;
-    int i ;
-    for (  i = 0; i < pos - 1; i++) {
+    for (int i = 0; i < pos - 1; i++) {
         temp2 = temp2->siguiente;
     }
     return temp2->datos;
@@ -202,6 +197,23 @@ void l_mostrar(Lista lista) {
         temp2 = temp2->siguiente;
     }
     printf("\n");
+}
+
+
+bool l_destruir(Lista L) {
+    if (L == NULL){
+        return true;
+    }
+    if (L->cantidad==0) {
+        free(L);
+        return true;
+    }
+    // recorro borrando
+    while (l_es_vacia(L) != true) {
+        l_eliminar(L, 1);
+    }
+    free(L);
+    return true;
 }
 
 
@@ -224,7 +236,12 @@ bool hay_siguiente(Iterador iterador) {
 
 
 TipoElemento siguiente(Iterador iterador) {
-    TipoElemento actual = iterador->posicionActual->datos;
-    iterador->posicionActual = iterador->posicionActual->siguiente;
-    return actual;
+    if (iterador->posicionActual != NULL) {
+        TipoElemento actual = iterador->posicionActual->datos;
+        iterador->posicionActual = iterador->posicionActual->siguiente;
+        return actual;
+    }
+    else {
+        return NULL;
+    }
 }

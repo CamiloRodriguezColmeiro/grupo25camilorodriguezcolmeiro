@@ -1,9 +1,8 @@
-#include "../headers/listas.h"
+#include ".\listas.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../tipoElemento/headers/tipo_elemento.h"
 
-static const int TAMANIO_MAXIMO = 100;
+//static const int TAMANIO_MAXIMO = 100;  Pasado al .h
 static const int NULO = -1;
 
 struct Nodo {
@@ -33,8 +32,6 @@ struct IteradorRep {
 Lista l_crear() {
     int i = 0;
     Lista nueva_lista = (Lista) malloc(sizeof(struct ListaRep));
-
-    // TODO hacer flexible y que la lista crezca sola
     nueva_lista->cursor = calloc(TAMANIO_MAXIMO, sizeof(struct Nodo));
     nueva_lista->cantidad = 0;
     nueva_lista->inicio = NULO;
@@ -79,7 +76,7 @@ bool l_agregar(Lista lista, TipoElemento elemento) {
         return false;
     }
 
-    // Tomo el primer libre
+    // Tomo el primer libre (MALLOC)
     p = lista->libre;
     lista->libre = lista->cursor[p].siguiente;
 
@@ -181,8 +178,7 @@ bool l_insertar(Lista lista, TipoElemento elemento, int pos) {
         lista->inicio = p;
     } else {
         int temp2 = lista->inicio;
-        int i;
-        for (  i = 0; i < pos - 2; i++) {
+        for (int i = 0; i < pos - 2; i++) {
             temp2 = lista->cursor[temp2].siguiente;
         }
         lista->cursor[p].siguiente = lista->cursor[temp2].siguiente;
@@ -203,12 +199,11 @@ bool l_eliminar(Lista lista, int pos) {
         if (pos == 1) {
             p = actual;
             lista->inicio = lista->cursor[actual].siguiente;
-            lista->cursor[p].siguiente = lista->libre;
+            lista->cursor[p].siguiente = lista->libre;  //free
             lista->libre = p;
 	    borre = true;
         } else {
-            int i;
-            for ( i = 0; i < pos - 2; i++) {
+            for (int i = 0; i < pos - 2; i++) {
                 actual = lista->cursor[actual].siguiente;
             }
             // actual apunta al nodo en posición (pos - 1)
@@ -226,8 +221,7 @@ bool l_eliminar(Lista lista, int pos) {
 
 TipoElemento l_recuperar(Lista lista, int pos) {
     int temp2 = lista->inicio;
-    int i;
-    for ( i = 0; i < pos - 1; i++) {
+    for (int i = 0; i < pos - 1; i++) {
         temp2 = lista->cursor[temp2].siguiente;
     }
     return lista->cursor[temp2].datos;
@@ -242,6 +236,25 @@ void l_mostrar(Lista lista) {
         temp2 = lista->cursor[temp2].siguiente;
     }
     printf("\n");
+}
+
+
+bool l_destruir(Lista L) {
+    if (L == NULL){
+        return true;
+    }
+    if (L->cantidad==0) {
+        free(L->cursor);
+        free(L);
+        return true;
+    }
+    // recorro borrando
+    while (l_es_vacia(L) != true) {
+        l_eliminar(L, 1);
+    }
+    free(L->cursor);
+    free(L);
+    return true;
 }
 
 
@@ -265,8 +278,13 @@ bool hay_siguiente(Iterador iterador) {
 
 
 TipoElemento siguiente(Iterador iterador) {
-    TipoElemento actual = iterador->lista->cursor[iterador->posicionActual].datos;
-    iterador->posicionActual = iterador->lista->cursor[iterador->posicionActual].siguiente;
-    return actual;
+    if (iterador->posicionActual != NULO){
+        TipoElemento actual = iterador->lista->cursor[iterador->posicionActual].datos;
+        iterador->posicionActual = iterador->lista->cursor[iterador->posicionActual].siguiente;
+        return actual;
+    }
+    else {
+        return NULL;
+    }
 }
 
