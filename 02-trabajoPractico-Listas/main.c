@@ -6,6 +6,9 @@
 #include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include "../libs/validaciones/headers/validaciones.h"
 
+
+#define TAMANIO  100
+
 Lista listaAleatoria(int n) {
     Lista l = l_crear();
 int i;
@@ -43,7 +46,12 @@ int main() {
 
         if (opcion == 2) {
 
-            int n = leerEntero("Cantidad de elementos: ");
+            int n = leerEntero("Cantidad de elementos tiene que ser mayor 0 y menor o igual a 100: ");
+              while(n> TAMANIO ||n<=0){
+                    printf("Error:  tiene que ser un numero mayor que cero y menor o igual a 100\n");
+
+                 n = leerEntero("Cantidad de elementos tiene que ser mayor 0 y menor o igual a 100:  ");
+                }
 
             Lista l1 = listaAleatoria(n);
             Lista l2 = listaAleatoria(n);
@@ -116,7 +124,11 @@ int main() {
 
         else if (opcion == 3 || opcion == 4) {
             int n = leerEntero("Cantidad de elementos (misma longitud): ");
-
+                    while(n > TAMANIO || n<=0){
+                    printf("Error:  tiene que ser un numero mayor que cero y menor o igual a 100\n");
+                   // n=0;
+                 n = leerEntero("Cantidad de elementos tiene que ser mayor 0 y menor o igual a 100: : ");
+                }
             printf("\n--- CARGA LISTA 1 ---\n");
             Lista l1 = rellenarLista(n);
 
@@ -133,9 +145,14 @@ int main() {
                     }else{
                         printf("No tiene escalar constante.\n");
                     }
+                }else{
+                printf("No tiene  multiplo.\n");
                 }
-                if (!r.escalar){
+
+                if(l_buscar(l1, 0)!=NULL){
+
                     printf("Un elemento de la primera lista es 0, imposibilitando la division.\n");
+
                 }
             }
 
@@ -190,8 +207,18 @@ int main() {
         }
 
        else if (opcion == 6) {
-            int n1 = leerEntero("Cantidad elementos L1: ");
-            int n2 = leerEntero("Cantidad elementos L2: ");
+            int n1 = leerEntero("Cantidad elementos L1 tiene que ser mayor 0 y menor o igual a 100: ");
+             while(n1>TAMANIO || n1<=0){
+                    printf("Error:  tiene que ser un numero mayor que cero y menor o igual a 100\n");
+                   // n=0;
+                 n1 = leerEntero("Cantidad elementos L1 tiene que ser mayor 0 y menor o igual a 100: : ");
+                }
+            int n2 = leerEntero("Cantidad elementos L2 tiene que ser mayor 0 y menor o igual a 100: : ");
+             while(n2 > TAMANIO || n2<0){
+                    printf("Error:  tiene que ser un numero mayor que cero valor menor o igual a 100\n");
+                   // n=0;
+                 n2 = leerEntero("Cantidad elementos L2 tiene que ser mayor 0 y menor o igual a 100: : ");
+                }
 
             printf("\n--- CARGA LISTA 1 ---\n");
             Lista l1 = rellenarLista(n1);
