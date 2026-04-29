@@ -163,12 +163,10 @@ void hacerPolinomio(Lista list) {
         coef = leerDouble("Ingrese coeficiente: ");
 
         float* valor = (float*) malloc(sizeof(float));
-        if (valor == NULL) {
-
-             fprintf(stderr, "Error: no se pudo reservar memoria\n");
-        return NULL;
-           }
-
+        if (valor == NULL){
+            fprintf(stderr, "Error: no se pudo reservar memoria.\n");
+            return NULL;
+        }
         *valor = (float) coef;
 
         TipoElemento te = te_crear_con_valor(grado, valor);

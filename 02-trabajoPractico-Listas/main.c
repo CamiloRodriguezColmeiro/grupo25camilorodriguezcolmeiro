@@ -6,6 +6,10 @@
 #include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include "../libs/validaciones/headers/validaciones.h"
 
+#include "tp_2_listas.c"
+#include "../libs/listas/implementaciones/listas_arreglos.c"
+#include "../libs/tipoElemento/implementaciones/tipo_elemento.c"
+#include "../libs/validaciones/implementaciones/validaciones.c"
 
 #define TAMANIO  100
 
@@ -123,7 +127,7 @@ int main() {
         }
 
         else if (opcion == 3 || opcion == 4) {
-            int n = leerEntero("Cantidad de elementos (misma longitud): ");
+            int n = leerEntero("Cantidad de elementos(misma longitud) tiene que ser mayor 0 y menor o igual a 100: ");
                     while(n > TAMANIO || n<=0){
                     printf("Error:  tiene que ser un numero mayor que cero y menor o igual a 100\n");
                    // n=0;
