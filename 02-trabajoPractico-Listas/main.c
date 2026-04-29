@@ -6,11 +6,6 @@
 #include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include "../libs/validaciones/headers/validaciones.h"
 
-#include "tp_2_listas.c"
-#include "../libs/listas/implementaciones/listas_arreglos.c"
-#include "../libs/tipoElemento/implementaciones/tipo_elemento.c"
-#include "../libs/validaciones/implementaciones/validaciones.c"
-
 #define TAMANIO  100
 
 Lista listaAleatoria(int n) {
