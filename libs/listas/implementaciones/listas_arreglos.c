@@ -1,7 +1,7 @@
-#include ".\listas.h"
+#include "../headers/listas.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "..\Tipos\tipo_elemento.h"
+#include "../../tipoElemento/headers/tipo_elemento.h"
 
 // static const int TAMANIO_MAXIMO = 100;  Pasado al .h
 
