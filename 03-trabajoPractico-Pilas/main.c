@@ -8,10 +8,10 @@
 #include "../libs/validaciones/headers/validaciones.h"
 
 void cargarPilaManual(Pila p){
-    int cantidad = leerEntero("Ingrese cantidad de elementos (Entre 0 y 10): ");
-    while(cantidad > 10 || cantidad < 0){
-        printf("Error, ustede ha ingresado un numero fuera de los limites\n");
-        cantidad = leerEntero("Ingrese cantidad de elementos (Entre 0 y 10): ");
+    int cantidad = leerEntero("Ingrese cantidad de elementos (Entre 0 y 100): ");
+    while(cantidad > 100 || cantidad < 0){
+        printf("Error, usted ha ingresado un numero fuera de los limites\n");
+        cantidad = leerEntero("Ingrese cantidad de elementos (Entre 0 y 100): ");
     }
     int i;
     for(i = 0; i < cantidad; i++){
@@ -214,9 +214,9 @@ int main(){
             }
             case 5:{
                 Pila p = p_crear();
-                int cantidad = leerEntero("Cantidad random de elementos (0 a 10): ");
-                while(cantidad > 10 || cantidad < 0){
-                    cantidad = leerEntero("Usted ha excedido los limites de elementos en la pila, inserte un numero valido (0 a 10): ");
+                int cantidad = leerEntero("Cantidad random de elementos (0 a 100): ");
+                while(cantidad > 100 || cantidad < 0){
+                    cantidad = leerEntero("Usted ha excedido los limites de elementos en la pila, inserte un numero valido (0 a 100): ");
                 }
                 cargarPilaRandom(p,cantidad);
                 printf("\nPILA RANDOM:\n");
