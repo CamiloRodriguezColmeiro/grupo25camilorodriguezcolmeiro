@@ -66,7 +66,8 @@ bool l_borrar(Lista lista, int clave) {
     while (pos < lista->cantidad) {
         if (lista->valores[pos]->clave == clave) {
             borre = true;
-            for (int i = pos; i < lista->cantidad - 1; i++) {
+            int i ;
+            for (i= pos; i < lista->cantidad - 1; i++) {
                 lista->valores[i] = lista->valores[i + 1];
             }
             lista->cantidad--;
@@ -100,7 +101,8 @@ bool l_insertar(Lista lista, TipoElemento elemento, int pos) {
         return false;
     }
     // Ahora si lo puede insertar - genero el hueco
-    for (int i = lista->cantidad; i >= pos && i > 0; i--) {
+    int i;
+    for ( i = lista->cantidad; i >= pos && i > 0; i--) {
         lista->valores[i] = lista->valores[i - 1];
     }
     lista->valores[pos - 1] = elemento;
@@ -116,7 +118,8 @@ bool l_eliminar(Lista lista, int pos) {
     // Ahora intento eliminar
     if (1 <= pos && pos <= l_longitud(lista)) {
         //aplasta a la izquierda
-        for (int i = pos - 1; i < lista->cantidad; i++) {
+        int i;
+        for (  i = pos - 1; i < lista->cantidad; i++) {
             lista->valores[i] = lista->valores[i + 1];
         }
         lista->cantidad--;
@@ -138,7 +141,8 @@ TipoElemento l_recuperar(Lista lista, int pos) {
 
 void l_mostrar(Lista lista) {
     printf("Contenido de la lista: ");
-    for (int i = 0; i < lista->cantidad; i++) {
+    int i ;
+    for ( i = 0; i < lista->cantidad; i++) {
         printf("%d ", lista->valores[i]->clave);
     }
     printf("\n");
