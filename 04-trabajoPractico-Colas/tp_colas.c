@@ -12,7 +12,7 @@ bool c_ej2_existeclave(Cola c, int clave){
     TipoElemento e;
     bool encontrado=false;
     Cola cola1 = c_crear();
-    while(!c_es_vacia(c)&& !encontrado){
+    while(!c_es_vacia(c)){
         e= c_desencolar(c);
         if(clave == e->clave){
             encontrado = true;
@@ -231,16 +231,15 @@ Cola c_ej5_divisortotal(Cola c) {
         c_encolar(c, e);
 
         if (divisibles == n - 1) {
-
-            TipoElemento nuevo =
-                te_crear_con_valor(divisor, true);
-
+            int* valor = malloc(sizeof(int));
+            *valor = 1; 
+            TipoElemento nuevo = te_crear_con_valor(divisor, valor);
             c_encolar(resultado, nuevo);
         }
         else if (divisibles >= (n - 1) / 2.0) {
-
-            TipoElemento nuevo = te_crear_con_valor(divisor, false);
-
+            int* valor = malloc(sizeof(int));
+            *valor = 0; 
+            TipoElemento nuevo = te_crear_con_valor(divisor, valor);
             c_encolar(resultado, nuevo);
         }
 

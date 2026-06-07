@@ -288,18 +288,13 @@ int main() {
                 Cola aux = c_crear();
 
                 while (!c_es_vacia(resultado)) {
-
                     TipoElemento te = c_desencolar(resultado);
-                    int esTotal = (int*)te->valor;
+                    int esTotal = *((int*)te->valor);
                     printf("Clave: %d - Tipo: %s\n",   te->clave, esTotal ? "TOTAL" : "PARCIAL");
-
                     c_encolar(aux, te);
                 }
-
                 while (!c_es_vacia(aux)) {
-
                     TipoElemento te = c_desencolar(aux);
-
                     c_encolar(resultado, te);
                 }
                 printf("\nLa complejidad algoritmica es O(n^2) \n");
