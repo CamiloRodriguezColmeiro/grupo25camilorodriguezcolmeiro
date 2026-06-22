@@ -2,10 +2,7 @@
 #include <stdlib.h>
 #include "time.h"
 #include <ctype.h>
-#include <stdbool.h>
-
 #include "tp_arboles.h"
-
 ///////AUX////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int ingresoEntero(int* n){
     char s[10];
@@ -142,11 +139,10 @@ void main2b(){
     resul= a_ej2_interiores(A);
 
     if(l_es_vacia(resul)){
-        printf("El arbol no posee nodos interiores. \n");
-    } else {
-        printf("La lista con los nodos interiores es: \n");
-        l_mostrar(resul);
+        printf("La clave no posee nodos interiores. \n");
     }
+    printf("La lista con los nodos interiores es: \n");
+    l_mostrar(resul);
     printf("\nLa complejidad algoritmica es O(n)\n");
 
     return;
@@ -200,12 +196,15 @@ void submenu2(){
         switch(opcion2){
             case 1:
                 main2a();
+                return;
                 break;
             case 2:
                 main2b();
+                return;
                 break;
             case 3:
                 main2c();
+                return;
                 break;
             default:
                 break;
@@ -417,21 +416,27 @@ void submenu3(){
         switch(opcion3){
             case 1:
                 main3a();
+                return;
                 break;
             case 2:
                 main3b();
+                return;
                 break;
             case 3:
                 main3c();
+                return;
                 break;
             case 4:
                 main3d();
+                return;
                 break;
             case 5:
                 main3e();
+                return;
                 break;
             case 6:
                 main3f();
+                return;
                 break;
             default:
 
@@ -564,24 +569,29 @@ void submenu4(){
         printf("3. Ejercicio 4c \n");
         printf("4. Ejercicio 4d \n");
         printf("5. Ejercicio 4e \n");
-        printf("6. Salir\n");
+        printf("7. Salir\n");
         scanf("%d", &opcion4);
 
         switch(opcion4){
             case 1:
                 main4a();
+                return;
                 break;
             case 2:
                 main4b();
+                return;
                 break;
             case 3:
                 main4c();
+                return;
                 break;
             case 4:
                 main4d();
+                return;
                 break;
             case 5:
                 main4e();
+                return;
                 break;
             default:
                 break;
@@ -645,7 +655,7 @@ void main8b(ArbolBinario A){
         }
     }
 
-    resultado= b_ej8_nivel(A, clave);
+    resultado= a_ej8_nivel(A, clave);
     printf("El nodo se encuentra en el nivel: %d", resultado);
 
     return;
@@ -655,7 +665,7 @@ void main8c(ArbolBinario A){
     printf("Este punto lista los nodos internos del arbol. \n");
     Lista resultado= l_crear();
 
-    resultado= c_ej8_internos(A);
+    resultado= a_ej8_internos(A);
     if(l_es_vacia(resultado)){
         printf("No hay nodos internos.");
         return;
@@ -667,7 +677,7 @@ void main8c(ArbolBinario A){
 
 void main8d(ArbolBinario A){ 
     printf("Este ejercicio comprueba si todas las hojas del arbol estan al mismo nivel");
-    bool hojasMismoNivel = d_ej8_hojasmismonivel(A);
+    bool hojasMismoNivel = a_ej8_hojasmismonivel(A);
 
     if(hojasMismoNivel){
         printf("Si estan al mismo nivel.");
@@ -720,20 +730,23 @@ void submenu8(){
 
 ////////////////////////////////////////////////////////////////////
 void main9(){
-    printf("este punto transforma un arbol binario en avl y compara la altura del avl con el binario original. \n");
+    printf("este punto transforma un arbol binario en avl y compara la altura del avl con el binario original.\n");
+
     ArbolBinario AB = a_crear();
     cargar_arbol_binario(AB);
+
     int alturaAB = alturaArbol(a_raiz(AB));
     printf("Altura del arbol binario: %d\n", alturaAB);
 
     ArbolAVL AVL = a_ej9_construiravl(AB);
+
     int alturaAVL = AVL->raiz ? AVL->raiz->FE : -1;
     printf("Altura del arbol AVL: %d\n", alturaAVL);
 
     int diferencia = a_ej9_diferenciaalturas(AB, AVL);
     printf("Diferencia de altura (Binario - AVL): %d\n", diferencia);
-    printf("\nLa complejidad algoritmica es: O(n log n) \n");
-    return;
+
+    printf("\nLa complejidad algoritmica es O(n log n)\n");
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -808,30 +821,38 @@ int main(){
                 break;
             case 2:
                 submenu2();
+                return 0;
                 break;
             case 3:
                 submenu3();
+                return 0;
                 break;
             case 4:
                 submenu4();
+                return 0;
                 break;
             case 5:
                 main7();
+                return 0;
                 break;
             case 6:
                 submenu8();
+                return 0;
                 break;
             case 7:
                 main9();
+                return 0;
                 break;
             case 8:
                 main10();
+                return 0;
                 break;
             default:
                 printf("\nNo elegiste una opcion valida, por favor ingresa un dato valido. \n");
         }
 
-    }while(opcion != 1);
+    }while(opcion != 8);
 
     return 0;
 }
+
