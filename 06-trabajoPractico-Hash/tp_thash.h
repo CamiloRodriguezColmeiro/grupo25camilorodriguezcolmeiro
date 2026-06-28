@@ -6,7 +6,7 @@
 #include "../libs/TipoElemento/headers/tipo_elemento.h"
 #include "../libs/listas/headers/listas.h"
 #include "../libs/arboles/headers/nodo.h"
-#include "../libs/arboles/headers/arbol-avl.h"
+#include "../libs/arboles/headers/arbol_avl.h"
 #include "../libs/hash/headers/tabla_hash.h"
 //Auxiliares:///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void limpiar_buffer();
