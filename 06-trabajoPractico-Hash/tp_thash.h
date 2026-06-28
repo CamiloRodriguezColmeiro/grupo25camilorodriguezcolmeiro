@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include <unistd.h>
-#include "../libs/TipoElemento/headers/tipo_elemento.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include "../libs/listas/headers/listas.h"
 #include "../libs/arboles/headers/nodo.h"
 #include "../libs/arboles/headers/arbol_avl.h"
