@@ -6,48 +6,52 @@
 
 // Desarrollar un algoritmo que dado dos conjuntos de elementos tipo numérico (clave)
 // verifique las operaciones de Unión, Intersección, Diferencia y Pertenencia. p2
+
 Conjunto c_ej2_union(Conjunto A, Conjunto B){
-    Conjunto Union=cto_crear();
-    Union=cto_union(A,B);
-    return Union;
+    return cto_union(A,B);
 }
+
 Conjunto c_ej2_interseccion(Conjunto A, Conjunto B){
-    Conjunto Interseccion=cto_crear();
-    Interseccion=cto_interseccion(A,B);
-    return Interseccion;
+    return cto_interseccion(A,B);
 }
+
 Conjunto c_ej2_diferencia(Conjunto A, Conjunto B){
-    Conjunto Diferencia=cto_crear();
-    Diferencia=cto_diferencia(A,B);
-    return Diferencia;
+    return cto_diferencia(A,B);
 }
-void operaciones(Conjunto A,Conjunto B){
-    Conjunto Union= c_ej2_union(A,B);
-    Conjunto Interseccion= c_ej2_interseccion(A, B);
-    Conjunto Diferencia=c_ej2_diferencia(A, B);
-    Conjunto PertenenciaA=cto_crear();
-    Conjunto PertenenciaB=cto_crear();
-    int clave=0;
-    
-    printf("\nIngrese la clave para mostrar pertenencia en los conjuntos ");
+
+bool c_ej2_pertenece(Conjunto conjunto, int clave){
+    return cto_pertenece(conjunto, clave);
+}
+
+void operaciones(Conjunto A, Conjunto B){
+    Conjunto Union = c_ej2_union(A,B);
+    Conjunto Interseccion = c_ej2_interseccion(A,B);
+    Conjunto Diferencia = c_ej2_diferencia(A,B);
+
+    int clave = 0;
+
+    printf("\nIngrese la clave para mostrar pertenencia en los conjuntos: ");
     scanf("%d",&clave);
 
-    if(cto_pertenece(A,clave)){
-        printf("\nEl elemento %d pertenece al conjunto A \n",clave);
+    if(c_ej2_pertenece(A,clave)){
+        printf("\nEl elemento %d pertenece al conjunto A.\n",clave);
     }else{
-        printf("La clave no esta en el conjunto A\n");
-    }
-    if(cto_pertenece(B,clave)){
-        printf("\nEl elemento %d pertenece al conjunto B \n",clave);
-    }else{
-        printf("La clave no esta en el conjunto B\n\n");
+        printf("\nEl elemento %d no pertenece al conjunto A.\n",clave);
     }
 
-    printf("\nLos elementos que tienen Union son: \n");
+    if(c_ej2_pertenece(B,clave)){
+        printf("El elemento %d pertenece al conjunto B.\n",clave);
+    }else{
+        printf("El elemento %d no pertenece al conjunto B.\n",clave);
+    }
+
+    printf("\nLos elementos de la Union son:\n");
     cto_mostrar(Union);
-    printf("\n\nLos elementos que tienen Interseccion son: \n");
+
+    printf("\n\nLos elementos de la Interseccion son:\n");
     cto_mostrar(Interseccion);
-    printf("\n\nLos elementos que tienen Dieferencia son: \n");
+
+    printf("\n\nLos elementos de la Diferencia (A - B) son:\n");
     cto_mostrar(Diferencia);
 }
 /////////////////////////////////////////////////////////////////////////////////// 
