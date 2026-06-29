@@ -98,7 +98,18 @@ void main5(){
     float promedioTiempoArbol = totalTiempoArbol / (float) q_repeticiones;
     float promedioTiempoTabla = totalTiempoTabla / (float) q_repeticiones;
 
-    printf("\n[OUTPUT] El promedio de tiempo de ejecucion del arbol es %.1f nanosegundos y el promedio de tiempo de ejecucion de la tabla es %.1f nanosegundos.\n", promedioTiempoArbol, promedioTiempoTabla);
+    printf("\n[OUTPUT] El promedio de tiempo de ejecucion del arbol es %.1f nanosegundos.\n", promedioTiempoArbol);
+    printf("[OUTPUT] El promedio de tiempo de ejecucion de la tabla hash es %.1f nanosegundos.\n", promedioTiempoTabla);
+
+    if (promedioTiempoTabla < promedioTiempoArbol){
+        printf("[CONCLUSION] La Tabla Hash obtuvo un menor tiempo promedio de acceso que el Arbol AVL.\n");
+    }
+    else if (promedioTiempoTabla > promedioTiempoArbol){
+        printf("[CONCLUSION] El Arbol AVL obtuvo un menor tiempo promedio de acceso que la Tabla Hash.\n");
+    }
+    else{
+        printf("[CONCLUSION] Ambas estructuras obtuvieron el mismo tiempo promedio de acceso.\n");
+}
 
     return;
 }
@@ -129,7 +140,6 @@ void main6(){
                 }
                 case 2:{
                     th_ej6_covid(tablita, 2);
-                    return;
                     break;
                 }
                 case 3:{
