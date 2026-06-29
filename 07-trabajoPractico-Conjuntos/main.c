@@ -10,28 +10,29 @@ void main2(){
     char claveChar;
     int indice=1;
 
-   Conjunto A=cto_crear();
-   while(seguiragregando){ 
-       printf("[INPUT] Ingrese el elemento %d del conjunto A ('n' para terminar de cargar el conjunto):",indice);
-       if(scanf("%d",&clave)>0){
-           cto_agregar(A,te_crear(clave));
-           indice++;
+    Conjunto A=cto_crear();
+    while(seguiragregando){
+        printf("[INPUT] Ingrese el elemento %d del conjunto A ('n' para terminar de cargar el conjunto):",indice);
+        if(scanf("%d",&clave)>0){
+            cto_agregar(A,te_crear(clave));
+            indice++;
         }else{
-           if(scanf("%c", &claveChar) > 0 && claveChar == 'n'){
-               seguiragregando = false;
-               printf("[INFO] Terminando ingreso del conjunto A.\n");
-            }
-           else{
-               printf("[ERROR] Debe ingresar un valor valido.\n");
+            if(scanf("%c", &claveChar) > 0 && claveChar == 'n'){
+                seguiragregando = false;
+                printf("[INFO] Terminando ingreso del conjunto A.\n");
+            }else{
+                printf("[ERROR] Debe ingresar un valor valido.\n");
             }
 
-           fflush(stdin);
+            fflush(stdin);
         }
     }
 
-    seguiragregando=true;
+    seguiragregando = true;
+    indice = 1;          // <-- agregado
+
     Conjunto B=cto_crear();
-    while(seguiragregando){ 
+    while(seguiragregando){
         printf("[INPUT] Ingrese el elemento %d del conjunto B ('n' para terminar de cargar el conjunto):",indice);
         if(scanf("%d",&clave)>0){
             cto_agregar(B,te_crear(clave));
@@ -40,16 +41,17 @@ void main2(){
             if(scanf("%c", &claveChar) > 0 && claveChar == 'n'){
                 seguiragregando = false;
                 printf("[INFO] Terminando ingreso del conjunto B.\n");
-            }
-            else{
+            }else{
                 printf("[ERROR] Debe ingresar un valor valido.\n");
             }
 
             fflush(stdin);
         }
     }
+
     cto_mostrar(A);
     cto_mostrar(B);
+
     operaciones(A,B);
 }
 /////////////////////////////////////////////////////////////////////////////////////////
