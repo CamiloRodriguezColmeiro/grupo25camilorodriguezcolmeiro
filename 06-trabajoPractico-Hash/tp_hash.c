@@ -301,7 +301,8 @@ void eliminarAlumno(FILE * archivo, TablaHash tabla){
     while (fread(&alumno, sizeof(struct Alumno), 1, archivo)) {
         fseek(archivo, sizeof(struct Alumno) * (posicion), SEEK_SET);
         fwrite(&alumno, sizeof(struct Alumno), 1, archivo);
-        th_insertar(tabla, te_crear_con_valor(alumno.legajo, (void*) posicion));////
+        th_eliminar(tabla, alumno.legajo);
+        th_insertar(tabla,te_crear_con_valor(alumno.legajo,(void*)posicion));
         posicion = (int) th_recuperar(tabla, alumno.legajo)->valor;
         fseek(archivo, sizeof(struct Alumno) * (posicion + 1), SEEK_SET);
     }
@@ -329,7 +330,8 @@ void th_ej4_abm(){
     printf(" 3 - Ver alumno por legajo.\n");
     printf(" 4 - Editar alumno por legajo.\n");
     printf(" 5 - Eliminar alumno por legajo.\n");
-    printf(" 6 - Mostrar tabla hash.\n\n");
+    printf(" 6 - Mostrar tabla hash.\n");
+    printf(" 7 - Salir.\n\n");
 }
 
 void consultarAlumno(FILE * archivo, TablaHash tabla){
@@ -367,7 +369,7 @@ void procesarMenu(FILE * archivo, TablaHash tabla){
     while(seguirAgregando){
         th_ej4_abm();
 
-        if(scanf("%d", &clave) > 0 && clave >= 1 && clave <= 6){
+        if(scanf("%d", &clave) > 0 && clave >= 1 && clave <= 7){
             switch(clave){
                 case 1: {
                     mostrarAlumnosDesdeArchivo(archivo);
@@ -394,6 +396,10 @@ void procesarMenu(FILE * archivo, TablaHash tabla){
                     th_mostrar(tabla);
                     break;
                 }
+                case 7:{
+                    seguirAgregando = false;
+                    break;
+}
                 default: {
                     printf(" Debe ingresar un valor valido.\n");
                     break;
@@ -473,6 +479,7 @@ void th_ej5_comparacion(ArbolAVL A, TablaHash thash, int q_claves, int q_repetic
         srand(time(NULL));
 
     int rango = rango_hasta - rango_desde + 1;
+    int *claves = malloc(sizeof(int) * q_claves);
     bool *usado = calloc(rango, sizeof(bool)); 
 
     int clavesGeneradas = 0;
@@ -485,32 +492,31 @@ void th_ej5_comparacion(ArbolAVL A, TablaHash thash, int q_claves, int q_repetic
             TipoElemento nuevo = te_crear(numeroGenerado);
             avl_insertar(A, nuevo);
             th_insertar(thash, nuevo);
+            claves[clavesGeneradas] = numeroGenerado;
 
             clavesGeneradas++;
         }
     }
 
     for (int i = 0; i < q_repeticiones; i++) {
-        int claveBuscada = rand() % rango + rango_desde;
+
+        int claveBuscada = claves[rand() % q_claves];
 
         long long tiempoInicio1 = obtener_tiempo_en_nanosegundos();
-        TipoElemento elementoBuscadoArbol = avl_buscar(A, claveBuscada);
+        avl_buscar(A, claveBuscada);
         long long tiempoFin1 = obtener_tiempo_en_nanosegundos();
 
-        *totalTiempoArbol += (tiempoFin1 - tiempoInicio1);
-    }
-
-    for (int i = 0; i < q_repeticiones; i++) {
-        int claveBuscada2 = rand() % rango + rango_desde;
+        *totalTiempoArbol += tiempoFin1 - tiempoInicio1;
 
         long long tiempoInicio2 = obtener_tiempo_en_nanosegundos();
-        TipoElemento elementoBuscadoTabla = th_recuperar(thash, claveBuscada2);
+        th_recuperar(thash, claveBuscada);
         long long tiempoFin2 = obtener_tiempo_en_nanosegundos();
 
-        *totalTiempoTabla += (tiempoFin2 - tiempoInicio2);
-    }
+        *totalTiempoTabla += tiempoFin2 - tiempoInicio2;
+}
 
     free(usado); 
+    free(claves);
 }
 
 /*
@@ -638,7 +644,7 @@ void cargar_paciente(TablaHash tabla){
     continuar = true;
     while (continuar){
         printf("[INFO] Ingrese el dia de vacunacion: \n");
-        if (scanf("%d", &persona.dia) == 1 && persona.dia > 0 && persona.dia <= 31){
+        if (scanf("%d", &persona.dia) == 1 && persona.dia > 0 && persona.dia <= days_in_month(persona.mes, persona.anio)){
             continuar = false;
 
         } 
@@ -740,7 +746,7 @@ void recuperar_paciente(TablaHash tabla){
     continuar = true;
     while (continuar){
         printf("[INFO] Ingrese el dia de vacunacion: \n");
-        if (scanf("%d", &dia) == 1 && dia > 0 && dia <= 31){
+        if (scanf("%d", &dia) == 1 && dia > 0 && dia <= days_in_month(mes, anio)){
             limpiar_buffer();
             continuar = false;
         } 
